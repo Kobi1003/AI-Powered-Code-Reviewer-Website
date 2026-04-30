@@ -1,9 +1,9 @@
-require("dotenv").config()
-const app = require("./src/app")
+require('dotenv').config(); // Load variables from .env
+const app = require('./src/app'); // Import the app logic
 
+// Use the PORT Render provides automatically, or 3000 for local testing
+const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000")
-})
-
-// console.log("API KEY:", process.env.GOOGLE_GEMINI_KEY);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

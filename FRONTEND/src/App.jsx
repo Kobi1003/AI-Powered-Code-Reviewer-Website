@@ -17,13 +17,17 @@ function App() {
   const [review, setReview] = useState('');
 
   async function reviewCode() {
-    try {
-      const response = await axios.post("https://ai-powered-code-reviewer-website.onrender.com/ai/get-review", { code });
-      setReview(response.data);
-    } catch (error) {
-      setReview("### Error\nCould not connect to the backend server.");
-    }
+  try {
+    // Vite uses import.meta.env for environment variables
+    const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5173";
+    
+    const response = await axios.post(`${apiBaseUrl}/ai/get-review`, { code });
+    setReview(response.data);
+  } catch (error) {
+    console.error("Connection Error:", error);
+    setReview("### Error\nCould not connect to the backend server.");
   }
+}
 
   // Handle the common "Editor is an object" import issue
   const CodeEditor = Editor.default || Editor;
