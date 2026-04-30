@@ -17,18 +17,18 @@ function App() {
   const [review, setReview] = useState('');
 
   async function reviewCode() {
-  try {
-    // This allows the app to use the Render URL in production 
-    // and localhost during your own development
-    const backendURL = import.meta.env.VITE_API_URL || "https://ai-powered-code-reviewer-website-b87k.onrender.com"; 
-    
-    const response = await axios.post(`${backendURL}/ai/get-review`, { code });
-    setReview(response.data);
-  } catch (error) {
-    console.error("Connection Error:", error);
-    setReview("### Error\nCould not connect to the review server. Please try again later.");
+    try {
+      // 1. Update the fallback URL to match your new deployment
+      // 2. We keep the ENV variable check so it works locally AND on Render
+      const backendURL = import.meta.env.VITE_API_URL || "http://localhost:5173"; 
+      
+      const response = await axios.post(`${backendURL}/ai/get-review`, { code });
+      setReview(response.data);
+    } catch (error) {
+      console.error("Connection Error:", error);
+      setReview("### Error\nCould not connect to the review server. Please try again later.");
+    }
   }
-}
 
   // Handle the common "Editor is an object" import issue
   const CodeEditor = Editor.default || Editor;
