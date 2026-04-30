@@ -18,14 +18,15 @@ function App() {
 
   async function reviewCode() {
   try {
-    // Force it to look at your backend port (3000) instead of the frontend port (5173)
-    const backendURL = "http://localhost:3000"; 
+    // This allows the app to use the Render URL in production 
+    // and localhost during your own development
+    const backendURL = import.meta.env.VITE_API_URL || "https://ai-powered-code-reviewer-website-b87k.onrender.com"; 
     
     const response = await axios.post(`${backendURL}/ai/get-review`, { code });
     setReview(response.data);
   } catch (error) {
     console.error("Connection Error:", error);
-    setReview("### Error\nCould not connect to the backend server at port 3000.");
+    setReview("### Error\nCould not connect to the review server. Please try again later.");
   }
 }
 
