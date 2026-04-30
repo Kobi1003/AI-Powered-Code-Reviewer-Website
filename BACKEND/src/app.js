@@ -4,17 +4,13 @@ const aiRoutes = require('./routes/ai.routes');
 
 const app = express();
 
-// 1. Configure CORS
-// This allows your frontend to talk to your backend
-const frontendURL = process.env.FRONTEND_URL || "http://localhost:5173"; 
-
+// Allow ONLY your frontend port to talk to this backend
 app.use(cors({
-    origin: frontendURL,
+    origin: "http://localhost:5173", 
     methods: ["GET", "POST"],
     credentials: true
 }));
 
-// 2. Middleware
 app.use(express.json());
 
 // 3. Routes

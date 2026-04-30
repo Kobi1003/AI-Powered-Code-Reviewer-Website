@@ -18,14 +18,14 @@ function App() {
 
   async function reviewCode() {
   try {
-    // Vite uses import.meta.env for environment variables
-    const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5173";
+    // Force it to look at your backend port (3000) instead of the frontend port (5173)
+    const backendURL = "http://localhost:3000"; 
     
-    const response = await axios.post(`${apiBaseUrl}/ai/get-review`, { code });
+    const response = await axios.post(`${backendURL}/ai/get-review`, { code });
     setReview(response.data);
   } catch (error) {
     console.error("Connection Error:", error);
-    setReview("### Error\nCould not connect to the backend server.");
+    setReview("### Error\nCould not connect to the backend server at port 3000.");
   }
 }
 
