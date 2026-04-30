@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+FRONTEND/node_modules/
+BACKEND/node_modules/
+
+# Environment Variables (CRITICAL: Do not delete this)
+.env
+BACKEND/.env
+FRONTEND/.env
+
+# Production Builds
+dist/
+FRONTEND/dist/
+build/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Editor Settings
+.vscode/
+.idea/
+
+# Personal Temp Files
+temp.md
