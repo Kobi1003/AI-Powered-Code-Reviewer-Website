@@ -6,7 +6,7 @@ BACKEND/node_modules/
 # Environment Variables (CRITICAL: Do not delete this)
 .env
 BACKEND/.env
-FRONTEND/.env
+FRONTEND/.env.example
 
 # Production Builds
 dist/
